@@ -6,11 +6,11 @@
 #    By: toandrad <toandrad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/09 14:40:42 by toandrad          #+#    #+#              #
-#    Updated: 2026/02/09 14:59:11 by toandrad         ###   ########.fr        #
+#    Updated: 2026/02/11 12:48:33 by toandrad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philosophers
+NAME = philo
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -25,8 +25,9 @@ RESET		= \033[0m
 SRCDIR = src
 OBJSDIR = objects
 INCDIR = inc
+VPATH = $(SRCDIR)
 
-SRCS = main.c
+SRCS = main.c parser.c utils.c init.c routine.c
 
 OBJS = $(addprefix $(OBJSDIR)/, $(SRCS:.c=.o))
 
