@@ -6,7 +6,7 @@
 /*   By: toandrad <toandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 11:50:47 by toandrad          #+#    #+#             */
-/*   Updated: 2026/02/11 13:12:28 by toandrad         ###   ########.fr       */
+/*   Updated: 2026/02/12 14:35:02 by toandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_atoi(const char *str)
 void	ft_usleep(long ms)
 {
 	long	start;
-	
+
 	start = get_time();
 	while ((get_time() - start) < ms)
 		usleep(500);
@@ -51,4 +51,24 @@ long	get_time(void)
 
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+}
+
+int	is_valid_positive_number(char *str)
+{
+	int	i;
+	int	nr;
+
+	i = 0;
+	if (!str || !str[i])
+		return (0);
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
+	}
+	nr = ft_atoi(str);
+	if (nr <= 0)
+		return (0);
+	return (1);
 }

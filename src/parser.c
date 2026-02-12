@@ -6,7 +6,7 @@
 /*   By: toandrad <toandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 15:06:51 by toandrad          #+#    #+#             */
-/*   Updated: 2026/02/10 13:36:29 by toandrad         ###   ########.fr       */
+/*   Updated: 2026/02/12 14:34:57 by toandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,4 @@ int	parse_args(int ac, char **av, t_data *data)
 	else
 		data->must_eat_count = -1;
 	return (0);
-}
-
-int	is_valid_positive_number(char *str)
-{
-	int	i;
-	int	nr;
-
-	i = 0;
-	if (!str || !str[i])
-		return (0);
-	while (str[i])
-	{
-		if (str[i] < '0' || str[i] > '9')
-			return (0);
-		i++;
-	}
-	nr = ft_atoi(str);
-	if (nr <= 0)
-		return (0);
-	return (1);
 }

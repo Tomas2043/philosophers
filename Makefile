@@ -6,7 +6,7 @@
 #    By: toandrad <toandrad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/09 14:40:42 by toandrad          #+#    #+#              #
-#    Updated: 2026/02/11 12:48:33 by toandrad         ###   ########.fr        #
+#    Updated: 2026/02/12 14:53:19 by toandrad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ OBJSDIR = objects
 INCDIR = inc
 VPATH = $(SRCDIR)
 
-SRCS = main.c parser.c utils.c init.c routine.c
+SRCS =	main.c parser.c utils.c init.c routine.c \
+				routine_helpers.c monitor.c
 
 OBJS = $(addprefix $(OBJSDIR)/, $(SRCS:.c=.o))
 
