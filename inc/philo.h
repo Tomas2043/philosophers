@@ -6,7 +6,7 @@
 /*   By: toandrad <toandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 15:09:35 by toandrad          #+#    #+#             */
-/*   Updated: 2026/02/11 13:12:47 by toandrad         ###   ########.fr       */
+/*   Updated: 2026/02/12 15:13:51 by toandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_philo
 int		ft_atoi(const char *str);
 long	get_time(void);
 void	ft_usleep(long ms);
+int		is_valid_positive_number(char *str);
 
 int		is_valid_positive_number(char *str);
 int		parse_args(int ac, char **av, t_data *data);
@@ -55,8 +56,18 @@ int		parse_args(int ac, char **av, t_data *data);
 int		init_data(t_data *data);
 int		init_forks(t_data *data);
 int		init_philos(t_philo **philos, t_data *data);
+void	init_threads(t_data data, t_philo *philos);
 
 void	print_status(t_philo *philo, char *status);
 void	*philo_routine(void *arg);
+
+int		check_simulation_end(t_philo *philo);
+void	eat_routine(t_philo *philo);
+void	handle_single_philo(t_philo *philo);
+
+void	*monitor_routine(void *arg);
+int		check_philo_death(t_philo *philo);
+void	handle_death(t_philo *philo);
+int		check_meals_eaten(t_philo *philos);
 
 #endif
