@@ -16,7 +16,7 @@ This becomes a problem, because every one of them needs to eat, but they all hav
 
 **Threads**:
 
-A thread is the smallest unit of execution within a program. Threads are normally used when you need multiple tasks to run at the same time (**concurrency**) or frequent data sharing. Threads can have problems when accessing shared data, where they can acess or write to the same data at the same time, leading to a "Race condition", where threads 'race' and data gets corrupted most of the time. That's where **mutexes** come in.
+A thread is the smallest unit of execution within a program. Threads are normally used when you need multiple tasks to run at the same time (**concurrency**) or frequent data sharing. Threads can have problems when accessing shared data, where they can access or write to the same data at the same time, leading to a "Race condition", where threads 'race' and data can get corrupted, leading to unpredictable behavior. That's where **mutexes** come in.
 
 **Mutexes**:
 
@@ -43,8 +43,30 @@ To run, use the command:
 - Takes 200 ms for each philosopher to sleep
 - **Expected outcome:** Infinite loop (there's no specific amount of times each philosopher has to eat)
 
+`./philo 5 800 200 200 7`
+
+- 5 Philosophers
+- Takes 800 ms for each philosopher to die
+- Takes 200 ms for each philosopher to eat
+- Takes 200 ms for each philosopher to sleep
+- **Expected outcome:** Each philosopher will eat 7 times, without any deaths
+
 Default project rules:
 
 - `make clean` - Remove object files
 - `make fclean` - Remove all generated files
 - `make re` - Rebuild from scratch
+
+## Resources
+
+### Documentation and References
+
+- [Project Subject](https://cdn.intra.42.fr/pdf/pdf/199022/en.subject.pdf)
+- [Philosophers 42 Guide](https://medium.com/@ruinadd/philosophers-42-guide-the-dining-philosophers-problem-893a24bc0fe2)
+
+### AI Usage
+
+AI tools were used in this project for:
+- **Guidance**
+- **Algorithm Design Choices**
+- **Code review / debugging**
