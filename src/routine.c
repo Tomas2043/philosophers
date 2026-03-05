@@ -6,7 +6,7 @@
 /*   By: toandrad <toandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 12:05:38 by toandrad          #+#    #+#             */
-/*   Updated: 2026/03/05 17:44:58 by toandrad         ###   ########.fr       */
+/*   Updated: 2026/03/05 18:23:20 by toandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,20 @@ void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	if (philo->id % 2 == 0)
+		ft_usleep(philo->data->time_to_eat / 2);
 	while (!check_simulation_end(philo))
 	{
 		print_status(philo, "is thinking");
+		if (philo->data->number_of_philos % 2 == 1)
+			ft_usleep(philo->data->time_to_eat);
 		pick_up_forks(philo);
+		if (check_simulation_end(philo))
+		{
+			if (philo->data->number_of_philos != 1)
+				put_down_forks(philo);
+			break ;
+		}
 		print_status(philo, "is eating");
 		eat_routine(philo);
 		put_down_forks(philo);
