@@ -6,7 +6,7 @@
 /*   By: toandrad <toandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 12:05:38 by toandrad          #+#    #+#             */
-/*   Updated: 2026/02/12 14:36:04 by toandrad         ###   ########.fr       */
+/*   Updated: 2026/03/05 17:44:58 by toandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,12 @@ void	print_status(t_philo *philo, char *status)
 {
 	long	timestamp;
 
-	pthread_mutex_lock(&philo->data->death_mutex);
-	if (philo->data->death_flag)
-	{
-		pthread_mutex_unlock(&philo->data->death_mutex);
-		return ;
-	}
-	pthread_mutex_unlock(&philo->data->death_mutex);
 	timestamp = get_time() - philo->data->start_time;
 	pthread_mutex_lock(&philo->data->print_mutex);
-	printf("%ld %d %s\n", timestamp, philo->id, status);
+	pthread_mutex_lock(&philo->data->death_mutex);
+	if (!philo->data->death_flag)
+		printf("%ld %d %s\n", timestamp, philo->id, status);
+	pthread_mutex_unlock(&philo->data->death_mutex);
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 

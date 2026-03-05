@@ -6,7 +6,7 @@
 /*   By: toandrad <toandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 14:35:44 by toandrad          #+#    #+#             */
-/*   Updated: 2026/03/05 17:11:29 by toandrad         ###   ########.fr       */
+/*   Updated: 2026/03/05 17:58:30 by toandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@ int	check_philo_death(t_philo *philo)
 	pthread_mutex_lock(&philo->meal_mutex);
 	time_without_eating = get_time() - philo->last_meal_time;
 	pthread_mutex_unlock(&philo->meal_mutex);
-	if (time_without_eating > philo->data->time_to_die)
+	if (time_without_eating >= philo->data->time_to_die)
 		return (1);
 	return (0);
 }
 
 void	handle_death(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->data->print_mutex);
 	pthread_mutex_lock(&philo->data->death_mutex);
 	philo->data->death_flag = 1;
 	pthread_mutex_unlock(&philo->data->death_mutex);
-	pthread_mutex_lock(&philo->data->print_mutex);
 	printf("%ld %d died\n",
 		get_time() - philo->data->start_time,
 		philo->id);
