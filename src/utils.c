@@ -6,7 +6,7 @@
 /*   By: toandrad <toandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 11:50:47 by toandrad          #+#    #+#             */
-/*   Updated: 2026/02/12 14:35:02 by toandrad         ###   ########.fr       */
+/*   Updated: 2026/03/05 17:26:14 by toandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_usleep(long ms)
 
 	start = get_time();
 	while ((get_time() - start) < ms)
-		usleep(500);
+		usleep(100);
 }
 
 long	get_time(void)

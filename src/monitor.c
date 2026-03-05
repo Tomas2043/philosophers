@@ -6,7 +6,7 @@
 /*   By: toandrad <toandrad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 14:35:44 by toandrad          #+#    #+#             */
-/*   Updated: 2026/02/12 15:25:02 by toandrad         ###   ########.fr       */
+/*   Updated: 2026/03/05 17:11:29 by toandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	*monitor_routine(void *arg)
 			pthread_mutex_unlock(&philos[0].data->death_mutex);
 			return (NULL);
 		}
-		ft_usleep(1000);
+		ft_usleep(1);
 	}
 }
 
